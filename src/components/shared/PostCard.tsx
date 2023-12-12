@@ -17,7 +17,7 @@ const PostCard = ({ post } : PostCardProps) => {
     const location = post.location;
 
   return (
-    <div className="post-card">
+    <div className="post-card light-5">
         <div className="flex-between">
                 <div className="flex items-center gap-3">
                     <Link to={`/profile/${post.creator.$id}`}>
@@ -25,8 +25,10 @@ const PostCard = ({ post } : PostCardProps) => {
                     </Link>
 
                     <div className="flex flex-col">
-                        <p className="base-medium lg:body-bold text-light-1">
+                        <p className="base-medium lg:body-bold text-light-1 flex">
                             {post.creator.username}
+                            { post.creator.$id === "6574132c122c08a82c39" && <img src="/assets/images/verified.png" alt="verified" style={{height: "16px", width: "16px"}} className="mt-[5px] ml-1"/>}
+
                         </p>
                         <div className="flex-center gap-2 text-light-3">
                             <p className="subtle-semibold lg:small-regular">{formatRelativeDate(post.$createdAt)}</p>  

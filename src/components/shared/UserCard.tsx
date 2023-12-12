@@ -20,8 +20,10 @@ const UserCard = ({ user }: UserCardProps) => {
         <p className="base-medium text-light-1 text-center line-clamp-1">
           {user.name}
         </p>
-        <p className="small-regular text-light-3 text-center line-clamp-1">
+        <p className="small-regular text-light-3 text-center line-clamp-1 flex whitespace-nowrap overflow-ellipsis">
           @{user.username}
+          { user.$id === "6574132c122c08a82c39" && <img src="/assets/images/verified.png" alt="verified" style={{height: "16px", width: "16px"}} className="mt-[4.5px] ml-1"/>}
+
         </p>
       </div>
 

@@ -25,7 +25,8 @@ const GridPostList = ({ posts, showUser = true, showStats = true } : GrindPostLi
                         {showUser && (
                             <div className="flex items-center justify-start gap-2">
                                 <img src={post.creator.imageUrl} alt={post.creator.username} className="h-8 w-8 rounded-full"/>
-                                <p className="line-clamp-1">{post.creator.username}</p>
+                                <p className="line-clamp-1 flex whitespace-nowrap overflow-ellipsis">{post.creator.username} { post.creator.$id === "6574132c122c08a82c39" && <img src="/assets/images/verified.png" alt="verified" style={{height: "16px", width: "16px"}} className="mt-[5px] ml-1"/>}
+</p>
                             </div>
                         )}
 

@@ -5,7 +5,7 @@ import {
   useGetPostById,
   useGetUserPosts,
   useDeletePost,
-} from "@/lib/react-query/queriesAndMutations";
+  } from "@/lib/react-query/queriesAndMutations";
 import { formatRelativeDate } from "@/lib/utils";
 import { useUserContext } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
@@ -18,14 +18,16 @@ const PostDetails = () => {
   const { id } = useParams();
   const { user } = useUserContext();
 
-  const { data: post, isPending: isLoading } = useGetPostById(id);
+  const { data: post, isPending: isLoading } = useGetPostById(id || '');
   const { data: userPosts, isPending: isUserPostLoading } = useGetUserPosts(
     post?.creator.$id
   );
+  // const { data: otherPosts, isPending: isLoadingPosts } = useGetPosts();
+
   const { mutate: deletePost } = useDeletePost();
 
   const relatedPosts = userPosts?.documents.filter(
-    (userPost) => userPost.$id !== id
+    (userPost) => userPost.$id !== id 
   );
 
   const handleDeletePost = () => {
@@ -143,7 +145,7 @@ const PostDetails = () => {
         <hr className="border w-full border-dark-4/80" />
 
         <h3 className="body-bold md:h3-bold w-full my-10">
-          More Related Posts
+          {isLoading ? "" : `More posts by ${post?.creator.$id !== user.id ? "@"+post?.creator.username : "you"  }`}
         </h3>
         {isUserPostLoading || !relatedPosts ? (
           <Loader />

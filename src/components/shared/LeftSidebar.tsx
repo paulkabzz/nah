@@ -32,8 +32,10 @@ const LeftSidebar = () => {
                 <p className="body-bold">
                     {user.name}
                 </p>
-                <div className="small-regular text-light-3">
+                <div className="small-regular text-light-3 flex whitespace-nowrap overflow-ellipsis">
                       @{user.username}
+                      { user.id === "6574132c122c08a82c39" && <img src="/assets/images/verified.png" alt="verified" style={{height: "16px", width: "16px"}} className="mt-[4px] ml-1"/>}
+
                 </div>
               </div>
           </Link>
